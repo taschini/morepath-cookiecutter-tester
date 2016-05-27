@@ -11,6 +11,11 @@ Cookiecutter template for Morepath.
 Getting started
 ---------------
 
+Clone the repository and initialize all submodules::
+
+  $ git clone --recursive git@github.com:taschini/morepath-cookiecutter-tester.git
+  $ cd morepath-cookiecutter-tester
+
 Create a new virtual environment and install the requirements::
 
   $ virtualenv --no-site-packages env
@@ -70,10 +75,29 @@ This the generated readme file::
 Testing the functionality of the project
 ----------------------------------------
 
-Create a virtual environment::
+Create a virtual environment and setup the project in there::
 
    $ virtualenv -q --no-site-packages env
    $ ./env/bin/pip install -qe './helloworld[test]'
+
+Verify the project metadata::
+
+   $ cat helloworld/helloworld.egg-info/PKG-INFO
+   Metadata-Version: 1.1
+   Name: helloworld
+   Version: 0.0.0
+   Summary: A RESTful application to greet the world.
+   Home-page: UNKNOWN
+   Author: John Doe
+   Author-email: john.doe@example.com
+   License: UNKNOWN
+   Description: UNKNOWN
+   Platform: any
+   Classifier: Intended Audience :: Developers
+   Classifier: Environment :: Web Environment
+   Classifier: Topic :: Internet :: WWW/HTTP :: WSGI
+   Classifier: Programming Language :: Python :: 2.7
+   Classifier: Programming Language :: Python :: 3.4
 
 Run the tests::
 
