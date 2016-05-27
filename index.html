@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Testing morepath-cookiecutter &mdash; Morepath-cookiecutter-tester 1.0.0.dev0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0.0.dev0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Morepath-cookiecutter-tester 1.0.0.dev0 documentation" href="toc.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Contents" href="toc.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="testing-morepath-cookiecutter">
+<h1>Testing morepath-cookiecutter<a class="headerlink" href="#testing-morepath-cookiecutter" title="Permalink to this headline">¶</a></h1>
+<p>This project provides a setup for testing <a class="reference external" href="https://github.com/morepath/morepath-cookiecutter">morepath-cookiecutter</a>, a
+Cookiecutter template for Morepath.</p>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>Create a new virtual environment and install the requirements:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> virtualenv --no-site-packages env
+<span class="gp">$</span> ./env/bin/pip install -r requirements.txt
+<span class="gp">$</span> <span class="nb">source</span> ./env/bin/activate
+</pre></div>
+</div>
+<p>To run the tests simply type:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> make
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-new-project">
+<h2>Create a new project<a class="headerlink" href="#create-a-new-project" title="Permalink to this headline">¶</a></h2>
+<p>Set up a new project:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cookiecutter <span class="si">${</span><span class="nv">TESTDIR</span><span class="si">}</span>/morepath-cookiecutter <span class="s">&lt;&lt;EOF</span>
+<span class="gp">&gt;</span><span class="s"> helloworld</span>
+<span class="gp">&gt;</span><span class="s"> A RESTful application to greet the world.</span>
+<span class="gp">&gt;</span><span class="s"> 1</span>
+<span class="gp">&gt;</span><span class="s"> John Doe</span>
+<span class="gp">&gt;</span><span class="s"> john.doe@example.com</span>
+<span class="gp">&gt;</span><span class="s"> EOF</span>
+<span class="go">package_name [helloworld]: description [A morepath helloworld application]: Select goal:</span>
+<span class="go">1 - A RESTful application</span>
+<span class="go">2 - A traditional web application</span>
+<span class="go">Choose from 1, 2 [1]: author []: author_email []:  (no-eol)</span>
+</pre></div>
+</div>
+<p>These are the files that have been created:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> tree helloworld
+<span class="go">helloworld</span>
+<span class="go">|-- MANIFEST.in</span>
+<span class="go">|-- README.rst</span>
+<span class="go">|-- helloworld</span>
+<span class="go">|   |-- __init__.py</span>
+<span class="go">|   |-- __main__.py</span>
+<span class="go">|   |-- app.py</span>
+<span class="go">|   |-- model.py</span>
+<span class="go">|   |-- path.py</span>
+<span class="go">|   |-- tests</span>
+<span class="go">|   |   `-- test_app.py</span>
+<span class="go">|   `-- view.py</span>
+<span class="go">|-- setup.cfg</span>
+<span class="go">`-- setup.py</span>
+
+<span class="go">2 directories, 11 files</span>
+</pre></div>
+</div>
+<p>This the generated readme file:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cat helloworld/README.rst
+<span class="go">Helloworld</span>
+<span class="go">==========</span>
+
+<span class="go">A RESTful application to greet the world.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-the-functionality-of-the-project">
+<h2>Testing the functionality of the project<a class="headerlink" href="#testing-the-functionality-of-the-project" title="Permalink to this headline">¶</a></h2>
+<p>Create a virtual environment:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> virtualenv -q --no-site-packages env
+<span class="gp">$</span> ./env/bin/pip install -qe <span class="s1">&#39;./helloworld[test]&#39;</span>
+</pre></div>
+</div>
+<p>Run the tests:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> ./env/bin/py.test -q helloworld
+<span class="go">.</span>
+<span class="go">1 passed in .* seconds (re)</span>
+</pre></div>
+</div>
+<p>Verify PEP8:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> flake8 helloworld
+</pre></div>
+</div>
+<p>Run the app:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="o">(</span> ./env/bin/run-app <span class="p">&amp;</span> <span class="nv">server</span><span class="o">=</span><span class="si">${</span><span class="p">!</span><span class="si">}</span><span class="p">;</span>
+<span class="gp">&gt;</span> sleep 1<span class="p">;</span>
+<span class="gp">&gt;</span> curl -sSw <span class="s1">&#39;\n&#39;</span> http://127.0.0.1:5000<span class="p">;</span>
+<span class="gp">&gt;</span> <span class="nb">kill</span> <span class="nv">$server</span> <span class="o">)</span>
+<span class="go">127.0.0.1 - - \[[^]]+\] &quot;GET / HTTP/1.1&quot; 200 147 (re)</span>
+<span class="go">{&quot;greetings&quot;: [{&quot;@id&quot;: &quot;http://127.0.0.1:5000/greeting/mundo&quot;, &quot;name&quot;: &quot;mundo&quot;}, {&quot;@id&quot;: &quot;http://127.0.0.1:5000/greeting/world&quot;, &quot;name&quot;: &quot;world&quot;}]}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="toc.html">Morepath-cookiecutter-tester</a></h1>
+
+
+
+<p class="blurb">Testing Morepath-cookiecutter</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=taschini&repo=morepath-cookiecutter-tester&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Testing morepath-cookiecutter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-project">Create a new project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-the-functionality-of-the-project">Testing the functionality of the project</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Stefano Taschini.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
