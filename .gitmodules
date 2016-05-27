@@ -1,0 +1,7 @@
+[submodule "doc/build/html"]
+	path = doc/build/html
+	url = git@github.com:taschini/morepath-cookiecutter-tester.git
+	branch = gh-pages
+[submodule "morepath-cookiecutter"]
+	path = morepath-cookiecutter
+	url = git@github.com:morepath/morepath-cookiecutter.git
