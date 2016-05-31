@@ -26,6 +26,17 @@ To run the tests simply type::
 
   $ make
 
+The tests use the remaining sections of this document as a script, so that you
+can immediately see what is being tested.
+
+If you want, you can also go through each step by hand. To do so you just need
+to set the ``TESTDIR`` variable to the project directory and switch to an empty
+directory::
+
+  $ export TESTDIR=`pwd`
+  $ cd `mktemp -d testing.XXXXXX`
+
+
 Create a new project
 --------------------
 
