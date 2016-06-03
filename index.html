@@ -162,6 +162,26 @@ directory:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="argument-validation">
+<h2>Argument validation<a class="headerlink" href="#argument-validation" title="Permalink to this headline">¶</a></h2>
+<p>Reject a package name that is not a valid name for a Python module:</p>
+<div class="highlight-console"><div class="highlight"><pre><span></span><span class="gp">$</span> cookiecutter <span class="si">${</span><span class="nv">TESTDIR</span><span class="si">}</span>/morepath-cookiecutter <span class="s">&lt;&lt;EOF</span>
+<span class="gp">&gt;</span><span class="s"> hello-world</span>
+<span class="gp">&gt;</span><span class="s"> A RESTful application to greet the world.</span>
+<span class="gp">&gt;</span><span class="s"> 1</span>
+<span class="gp">&gt;</span><span class="s"> John Doe</span>
+<span class="gp">&gt;</span><span class="s"> john.doe@example.com</span>
+<span class="gp">&gt;</span><span class="s"> EOF</span>
+<span class="go">package_name [helloworld]: description [A morepath helloworld application]: Select goal:</span>
+<span class="go">1 - A RESTful application</span>
+<span class="go">2 - A traditional web application</span>
+<span class="go">Choose from 1, 2 [1]: author []: author_email []: ERROR: hello-world is not a valid Python module name!</span>
+<span class="go">ERROR: Stopping generation because pre_gen_project hook script didn&#39;t exit sucessfully</span>
+<span class="go">Hook script failed (exit status: 1)</span>
+<span class="go">[1]</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -194,6 +214,7 @@ directory:</p>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#create-a-new-project">Create a new project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#testing-the-functionality-of-the-project">Testing the functionality of the project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#argument-validation">Argument validation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
