@@ -129,3 +129,23 @@ Run the app, query the app, and close the app::
    127.0.0.1 - - \[[^]]+\] "GET / HTTP/1.1" 200 147 (re)
    {"greetings": [{"@id": "http://127.0.0.1:5000/greeting/mundo", "name": "mundo"}, {"@id": "http://127.0.0.1:5000/greeting/world", "name": "world"}]}
 
+
+Argument validation
+-------------------
+
+Reject a package name that is not a valid name for a Python module::
+
+   $ cookiecutter ${TESTDIR}/morepath-cookiecutter <<EOF
+   > hello-world
+   > A RESTful application to greet the world.
+   > 1
+   > John Doe
+   > john.doe@example.com
+   > EOF
+   package_name [helloworld]: description [A morepath helloworld application]: Select goal:
+   1 - A RESTful application
+   2 - A traditional web application
+   Choose from 1, 2 [1]: author []: author_email []: ERROR: hello-world is not a valid Python module name!
+   ERROR: Stopping generation because pre_gen_project hook script didn't exit sucessfully
+   Hook script failed (exit status: 1)
+   [1]
